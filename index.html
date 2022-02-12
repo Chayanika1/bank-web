@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <section style="display:flex">
+            <div style="background-color: aquamarine;" >
+                <h3 >Deposit</h3>
+                <h4>$ <span id="deposit-total">00</span></h4>
+            </div>
+            <div style="background-color:darkgreen">
+                <h3>Withdraw</h3>
+                <h4>$ <span id="withdraw-total">100</span></h4>
+            </div>
+            <div style="background-color: blueviolet;">
+                <h3 >balance</h3>
+                <h4>$ <span id="balance-total">4000</span></h4>
+            </div>
+        </section>
+        <section style="display: flex;">
+            <from>
+                <input id="deposit-input"type ="text" placeholder="enter your deposit">
+                <button id="deposit-button">deposit</button>
+            </from>
+            <from>
+                <input id="withdraw-input"type ="text" placeholder="enter your withdraw">
+                <button id="withdraw-button">withdraw</button>
+            </from>
+        </section>
+    </div>
+
+
+
+    <script>
+        function getInputValue(inputId){
+            const depositInput = document.getElementById(inputId);
+          const depositAmountText = depositInput.value;
+          const depositAmount = parseFloat(depositAmountText);
+          depositInput.value= '';
+          return depositAmount;
+        }
+
+
+        
+      
+        //handel deposit button
+        
+      document.getElementById('deposit-button').addEventListener('click',function(){
+          //console.log('deposit clicked');
+         /* const depositInput = document.getElementById('deposit-input');
+          const depositAmountText = depositInput.value;
+          const depositAmount = parseFloat(depositAmountText);*/
+          //console.log(depositInputText);*/
+          //const depositAmount = getInputValue('deposit-input');
+          //deposit total
+          const depositTotal = document.getElementById('deposit-total');
+         const depositTotalText = depositTotal.innerText;
+         const previousDepositTotal = parseFloat(depositTotalText);
+          depositTotal.innerText = previousDepositTotal;
+          
+         depositTotal.innerText =  previousDepositTotal+depositAmount;
+        
+         //depositInput.value= '';
+          const myBalance = blnsDeposit('deposit-input');
+          //update balance
+         const balanceTotal = document.getElementById('balance-total');
+         const balanceTotalText =balanceTotal.innerText;
+         const previousBalanceTotal = parseFloat(balanceTotalText)
+          balanceTotal.innerText =  previousDepositTotal + depositAmount;
+         //depositUpdate();
+        
+       })
+       //handel withdraw
+       document.getElementById('withdraw-button').addEventListener('click',function(){
+          /* const withdrawInput = document.getElementById('withdraw-input');
+           const withdrawAmountText =withdrawInput.value;
+           const withdrawAmount = parseFloat(withdrawAmountText);*/
+           //handel withdraw total
+           const withdrawTotal = document.getElementById('withdraw-total');
+          const previousWithdrawTotalText = withdrawTotal.innerText;
+           const previousWithdrawTotal = parseFloat(previousWithdrawTotalText);
+          // withdrawTotal.innerText = withdrawAmount;
+           withdrawTotal.innerText = previousWithdrawTotal + withdrawAmount ;
+           const withdraw = getInputValue('withdraw-input');
+           //const withdrawAmount = blnsDeposit('withdraw-input');
+          // withdrawInput.value ='';
+           //update balance
+           const balanceTotal=document.getElementById('balance-total');
+          const balanceTotalText = balanceTotal.innerText;
+          const previousBalanceTotal = parseFloat(balanceTotalText);
+          balanceTotal.innerText = previousBalanceTotal - withdrawAmount;
+       })
+     
+       
+       
+
+
+    </script>
+</body>
+</html>
+
